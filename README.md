@@ -2,9 +2,10 @@
 
 This is the official, recommended, and supported method to install Artillery dashboard in AWS.
 
-**NOTE**
 
+ℹ️ **NOTE**
 Artillery dashboard is currently in private beta and requires an active deployment of [Artillery Pro](https://www.artillery.io/pricing). To join the beta, please get in touch via [team@artillery.io](mailto:team@artillery.io)
+
 
 ## Introduction
 
@@ -12,7 +13,7 @@ This [AWS CDK](https://aws.amazon.com/cdk/)-based installer creates all of the r
 
 ## Pre-requisites
 
-- Active Artillery Pro installation (this code references an IAM role created by Artillery Pro)
+- Active Artillery Pro installation (this code references an IAM policy created by Artillery Pro)
 - CDK CLI installed (`npm install -g aws-cdk`)
 - AWS profile set up with a default region
 - A GitHub OAuth app created to configure login with GitHub ([GitHub docs](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app))
