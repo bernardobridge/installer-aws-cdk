@@ -52,7 +52,7 @@ artillery set-config-value --name GITHUB_CLIENT_ID --value abcd123
 artillery set-config-value --name GITHUB_CLIENT_SECRET --value abcd123
 ```
 
-### `NEXTAUTH_SECRET`
+#### `NEXTAUTH_SECRET`
 
 Run the following command to set this value to a randomly-generated string:
 
