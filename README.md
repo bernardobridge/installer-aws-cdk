@@ -116,6 +116,14 @@ Control Panel can be deployed to an existing Fargate cluster, or the stack can c
 - `FARGATE_CLUSTER_NAME` - the name of the Fargate cluster to use, defaults to `artilleryio-cluster`
 - `CREATE_CLUSTER` - set to `true` to create the cluster, leave out if the cluster already exists
 
+#### Secondary deployment
+
+If you have a secondary deployment of Artillery Pro, configure Artillery dashboard to use that deployment by setting `ARTILLERY_BACKEND=<region of secondary deployment>`, e.g.:
+
+```shell
+ARTILLERY_BACKEND=eu-central-1 cdk deploy
+```
+
 ## Useful commands to work with the CDK
 
 * `npm run test`         perform the jest unit tests
