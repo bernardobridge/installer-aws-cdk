@@ -17,6 +17,7 @@ This [AWS CDK](https://aws.amazon.com/cdk/)-based installer creates all of the r
 - CDK CLI installed (`npm install -g aws-cdk`)
 - AWS profile set up with a default region
 - A GitHub OAuth app created to configure login with GitHub ([GitHub docs](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app))
+  - The app can be created under any GitHub account that you or your team control. You can start with a GitHub app in your own account, and change it later.
 
 ## Usage
 
