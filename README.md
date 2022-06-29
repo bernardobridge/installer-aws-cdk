@@ -96,9 +96,19 @@ You should now be able to go to that URL in the browser and log into Artillery d
 
 The stack supports a variety of deployment configurations.
 
-#### Control Panel visibility
+#### Application version
 
-By default, Control Panel will be deployed as an internal service (behind an internal ALB), and will only be accessible through a VPN. To create an internet-facing deployment, set the following environment variables:
+By default, the stack will deploy the latest version of the application (using the `latest` tag).
+
+To pin to a specific version, set the `APP_VERSION` environment variable.
+
+Available versions:
+
+- v0.7.0
+
+#### Application visibility
+
+By default, the dashboard will be deployed as an internal service (behind an internal ALB), and will only be accessible through a VPN. To create an internet-facing deployment, set the following environment variables:
 
 - `USE_INTERNET_FACING_ALB=true`
 - `USE_TLS=true`
@@ -112,7 +122,7 @@ By default, the deplayment will be created in the default VPC. If the default VP
 
 #### Fargate cluster
 
-Control Panel can be deployed to an existing Fargate cluster, or the stack can create one for you. This can be configured with the following environment variables:
+The dashboard can be deployed to an existing Fargate cluster, or the stack can create one for you. This can be configured with the following environment variables:
 
 - `FARGATE_CLUSTER_NAME` - the name of the Fargate cluster to use, defaults to `artilleryio-cluster`
 - `CREATE_CLUSTER` - set to `true` to create the cluster, leave out if the cluster already exists
