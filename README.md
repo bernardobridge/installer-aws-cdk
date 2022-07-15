@@ -113,6 +113,7 @@ By default, the dashboard will be deployed as an internal service (behind an int
 - `USE_INTERNET_FACING_ALB=true`
 - `USE_TLS=true`
 - `ACM_CERT_ARN=arn:aws:acm:arn-of-an-acm-certificate-to-use`
+- `APP_DOMAIN=my-cert-domain.com`
 
 #### VPC
 
