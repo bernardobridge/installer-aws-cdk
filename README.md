@@ -33,14 +33,30 @@ cdk bootstrap # bootstrap AWS CDK
 
 Set required configuration for the app:
 
-#### `GITHUB_ALLOWED_USERS`
+#### `GITHUB_ALLOWED_ORGS` and `GITHUB_ALLOWED_USERS`
 
-This parameter specifies GitHub usernames that may log into the dashboard and is expected to be a JSON list.
+These parameters control who is allowed to access the dashboard.
+
+- `GITHUB_ALLOWED_ORGS` - a JSON-encoded list of GitHub org names. Any user with a [public membership](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-your-membership-in-organizations/publicizing-or-hiding-organization-membership) of that org will be able to use the dashboard.
+- `GITHUB_ALLOWED_USERS` - a JSON-encoded list of GitHub usernames. A user on this list will be allowed to use the dashboard.
 
 For example, to allow the GitHub user `hassy` to login, run:
 
 ```shell
 artillery set-config-value --name GITHUB_ALLOWED_USERS --value '["hassy"]'
+```
+
+To allow anyone in the `artilleryio` organization to login, run:
+
+```shell
+artillery set-config-value --name GITHUB_ALLOWED_ORGS --value '["artilleryio"]'
+```
+
+**NOTE**: Both of these parameters are expected to be set. If you're not going to use one of them, set it to an empty list with:
+
+```shell
+# Not using username-based login, so set it to an empty list:
+artillery set-config-value --name GITHUB_ALLOWED_USERS --value '[]'
 ```
 
 #### `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`
@@ -105,7 +121,7 @@ To pin to a specific version, set the `APP_VERSION` environment variable.
 Available versions:
 
 - v0.7.0
-
+- v0.8.0
 #### Application visibility
 
 By default, the dashboard will be deployed as an internal service (behind an internal ALB), and will only be accessible through a VPN. To create an internet-facing deployment, set the following environment variables:
@@ -117,7 +133,7 @@ By default, the dashboard will be deployed as an internal service (behind an int
 
 #### VPC
 
-By default, the deplayment will be created in the default VPC. If the default VPC does not exist, or if you want to designate a specific VPC, set the following environment variable:
+By default, the deployment will be created in the default VPC. If the default VPC does not exist, or if you want to designate a specific VPC, set the following environment variable:
 
 - `VPC_ID=<id of a VPC>`, e.g. `VPC_ID=vpc-id-12345`
 
