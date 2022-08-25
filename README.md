@@ -122,6 +122,8 @@ Available versions:
 
 - v0.7.0
 - v0.8.0
+- v0.9.0
+
 #### Application visibility
 
 By default, the dashboard will be deployed as an internal service (behind an internal ALB), and will only be accessible through a VPN. To create an internet-facing deployment, set the following environment variables:
