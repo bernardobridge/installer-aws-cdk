@@ -125,6 +125,7 @@ Available versions:
 - v0.9.0
 - v0.9.1
 - v0.9.2
+- v0.9.3
 
 #### Application visibility
 
