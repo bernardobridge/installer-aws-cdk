@@ -59,6 +59,15 @@ artillery set-config-value --name GITHUB_ALLOWED_ORGS --value '["artilleryio"]'
 artillery set-config-value --name GITHUB_ALLOWED_USERS --value '[]'
 ```
 
+#### GITHUB_ALLOWED_USERS in Secrets Manager instead of SSM Parameter Store
+
+The command listed above creates the config value in SSM Parameter Store, which is the default way of using this. However, since SSM Parameter Store has a 4-8 KB limitation in the size of the secret, you may hit this limit if you want to allow a sufficiently large user base, and `GITHUB_ALLOWED_ORGS` doesn't work for you (e.g. if users in your org don't have a public profile enabled by default).
+
+In that case, you will need to:
+1. Create a **Plaintext Secret** in Secrets Manager, called `/artilleryio/GITHUB_ALLOWED_USERS`, in the same AWS region as your deployment.
+2. The secret will look the same as the SSM secret described above, a list of users, e.g. `["hassy", "dino"]`. 
+3. When deploying the dashboard, make sure to set the environment variable `USE_SECRETS_MANAGER_FOR_GITHUB_USERS=true` before your `cdk deploy` command.
+
 #### `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`
 
 These need to be set to a valid client ID and client secret for a GitHub OAuth app. See [GitHub docs](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app) for details on how to create an app. **Note:** set "Authorization Callback URL" to `http://localhost` initially. You will update this setting with the actual URL of Artillery dashboard once you've deployed it.
